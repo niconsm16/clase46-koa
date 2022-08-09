@@ -1,0 +1,15 @@
+extends ../layouts/main.pug
+block content
+    div(class='w-3/4 bg-slate-300 mx-auto p-8 rounded-md')
+        form(id='login' class='flex flex-col gap-2' action='/login' method='post')
+            label(class='m-auto mb-4 text-3xl text-center font-bold text-slate-700' for='username' style='font-family:sans-serif') Ingrese sus datos
+            if error
+                div(class='w-full. y-2 px-4 bg-rose-700 text-neutral-100 text-center rounded') Disculpa, el usuario ingresado es inexistente
+            input(id='username' class='w-full rounded p-2 peer focus:outline-none focus:ring-0 focus:border-2 focus:border-green-500 invalid:border-zinc-500 invalid:text-red-600 focus:invalid:border-red-500 focus:invalid:ring-red-500' 
+                name='username' type='email' placeholder='Ingrese su email' required)
+            input(id='password' class='w-full rounded p-2 peer focus:outline-none focus:ring-0 focus:border-2 focus:border-green-500 invalid:border-zinc-500 invalid:text-red-600 focus:invalid:border-red-500 focus:invalid:ring-red-500' 
+                name='password' type='password' placeholder='Ingrese su contraseña' required)
+            button(type='submit' class='w-fit bg-slate-500 text-white mt-2 mx-auto py-2 px-4 transition duration-300 rounded hover:bg-slate-700') Logueame
+            a(class='w-fit bg-orange-700 text-white mt-2 mx-auto py-2 px-4 transition duration-300 rounded hover:bg-orange-500' href='/register') Registrarme
+
+        //- script(src='./js/login/login.js')

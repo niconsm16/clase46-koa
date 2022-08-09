@@ -1,0 +1,42 @@
+query {
+  getAll {
+    id
+    nombre
+    precio
+    foto
+  }
+}
+
+mutation Mutation($prod: ProductosInput) {
+  newItem(prod: $prod)
+}
+
+mutation Mutation($modificar: ProductosModif) {
+  updateItem(prod: $modificar)
+}
+
+mutation Mutation($delItemId: ID!) {
+  delItem(id: $delItemId)
+}
+
+{
+  "prod": {
+    "nombre": "ganso",
+    "precio": 123.00,
+    "foto": "https://wikifaunia.com/wp-content/uploads/2013/11/ganso.jpg"
+  },
+  "updateItemId": null
+}
+
+{
+  "modificar": {
+    "id":"224",
+    "nombre":"gansete",
+    "precio":456.00,
+    "foto":"https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Geese_Fruggo01.JPG/640px-Geese_Fruggo01.JPG"
+  }
+} 
+
+{
+  "id": "224"
+}

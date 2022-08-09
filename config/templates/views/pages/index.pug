@@ -1,0 +1,18 @@
+extends ../layouts/main
+
+block content
+    .w-full.h-full.bg-slate-100
+        include ../partials/bienvenida
+
+        //- Form
+        iframe(id='form-iframe' src='/productos-form' frameborder='0' class='w-full h-[36rem]')
+
+        //- Chat
+        .flex.flex-col.self-center.items-center
+            include ../partials/chat
+
+        //- Productos
+        .flex.flex-col.self-center.items-center
+            include ../partials/productos
+        //- Scripts 
+        include ../partials/scripts-index

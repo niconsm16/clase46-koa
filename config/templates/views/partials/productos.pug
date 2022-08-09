@@ -1,0 +1,17 @@
+h1.bg-neutral-200.p-4.rounded.text-center.m-3.font-bold.text-4xl Productos
+.flex.flex-col.my-8.bg-neutral-200.pb-2.rounded(class='w-3/4' style='place-items: center')
+    .flex.w-full.py-2.px-4.text-center.font-bold
+        .w-auto.pr-2.text-left Id
+        .text-left(class='w-3/4') Producto
+        .w-20 Precio
+        .w-48 Imagen
+        .w-6.ml-4.px-2.flex.justify-center Del
+            if graphql
+                script(src='js/graphql/product-del-graphql.js')
+                script(src='js/graphql/products-list-graphql.js')
+            else
+                script(src='js/product-del.js')
+                script(src='js/products-list.js')
+
+    #products-list.w-full.flex.flex-col.items-center.px-2
+script(src='js/products-client.js')

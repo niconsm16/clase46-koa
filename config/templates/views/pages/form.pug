@@ -1,0 +1,21 @@
+include ../layouts/main
+
+block content
+    .w-full.h-full.bg-transparent
+        .flex.flex-col.mx-auto.my-8.pb-12.items-center.rounded.bg-slate-300.self-center(class='w-3/4')
+            h2.text-3xl.text-slate-800.font-bold.p-8 Que querés hacer?
+            .self-center.bg-slate-200.rounded(class='w-4/5')
+                if status
+                    include ../partials/status
+                if ingresar
+                    if graphql
+                        block ingresar-graphql
+                    else
+                        include ../partials/ingresar
+                else 
+                    if graphql
+                        block modificar-graphql
+                    else    
+                        include ../partials/modificar
+
+script(src='./js/form-client.js')

@@ -1,0 +1,14 @@
+.flex.w-full.text-center
+    button#ingresar.bg-slate-400.text-slate-800.py-1.w-full.rounded-tl.font-bold(class='hover:text-white')
+        | Ingresar
+        | un producto
+    button#modificar.bg-slate-200.text-black.py-1.w-full.rounded-tr.font-bold
+        | Modificar un
+        | producto
+
+form#productForm.flex.flex-col.m-2.px-4.pt-4.gap-2(action='/api/productos/:id' method='post')
+    input.mt-1.block.w-full.px-3.py-2.bg-white.border-slate-300.rounded-md.text-sm.text-black.shadow-sm.placeholder-slate-400(type='text' placeholder='ingresa el Id del producto' name='id' class='focus:border focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 invalid:border-zinc-500 invalid:text-red-600 focus:invalid:border focus:invalid:border-red-500 focus:invalid:ring-red-500' required='')
+    input.mt-1.block.w-full.px-3.py-2.bg-white.border-slate-300.rounded-md.text-sm.text-black.shadow-sm.placeholder-slate-400(type='text' name='nombre' placeholder='Nombre del producto' class='focus:border focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 invalid:border-zinc-500 invalid:text-red-600 focus:invalid:border focus:invalid:border-red-500 focus:invalid:ring-red-500' required='')
+    input.mt-1.block.w-full.px-3.py-2.bg-white.rounded-md.text-sm.text-black.shadow-sm.placeholder-slate-400(type='number' placeholder='Precio' name='precio' class='focus:border focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 invalid:border-zinc-500 invalid:text-red-600 focus:invalid:border focus:invalid:border-red-500 focus:invalid:ring-red-500' required='')
+    input.mt-1.block.w-full.px-3.py-2.bg-white.border.border-slate-300.rounded-md.text-sm.text-black.shadow-sm.placeholder-slate-400(type='url' placeholder='Link de miniatura (opcional)' name='foto' class='focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-zinc-500 invalid:text-red-600 focus:invalid:border-red-500 focus:invalid:ring-red-500')
+    button.w-fit.px-4.py-1.m-3.self-center.text-white.font-bold.bg-slate-500.transition.duration-300.rounded(type='submit' class='hover:bg-slate-400') Modificar
