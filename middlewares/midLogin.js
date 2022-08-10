@@ -1,9 +1,6 @@
-// export const login = async (ctx) => {
-//     ctx.isAuthenticated()
-//     ctx.isUnauthenticated()
-//     await ctx.login()
-// ctx.state.user    
-        
-//         ? next() : ctx.redirect('/login')
-// }
+export const login = async (ctx, next) => {
+    ctx.isAuthenticated()
+        ? next()
+        : ctx.redirect('/login')
+}
 

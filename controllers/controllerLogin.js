@@ -39,47 +39,30 @@ export class ControllerLogin {
 
     async verification(ctx) {
         return passport.authenticate('login',
-
-            //     {
-            //         successRedirect: '/',
-            //         failureRedirect: '/login-error'
-            //     }
-            // )(ctx)
-            // }
-
-            async (err, user, info, status) => {
-                if (user === false) {
-                    ctx.redirect('/login-error')
-                }
-                else {
-                    // console.log(ctx.state)
-                    // await ctx.login(user)
-                    ctx.redirect('/')
-                }
-            })(ctx)
-
+            {
+                successRedirect: '/',
+                failureRedirect: '/login-error'
+            }
+        )(ctx)
     }
 
+    async createUser(ctx) {
+        return passport.authenticate('register',
+            {
+                successRedirect: '/',
+                failureRedirect: '/register-error'
+            }
+        )(ctx)
+    }
 
-
-    // createUser = passport.authenticate('register', {
-    //     successRedirect: '/',
-    //     failureRedirect: '/register-error'
-    // })
-
-
-    async logout(ctx, next) {
-        return await ctx.render('logout', { user: 'juano' })
-
-        //     try {
-
-        //         res.render('logout', { user: req.session.passport.user })
-        //         res.clearCookie('session.with.atlas')
-        //         req.session.destroy(err => {
-        //             err && res.status(500)
-        //                 .send('Hubo un error en su solicitud: Ya está deslogueado')
-        //         })
-        //     }
-        //     catch (err) { console.log('Error en controlador - Login', err) }
+    async logout(ctx) {
+        let user = []
+        user = [...user, ctx.state.user.email]
+        if (ctx.isAuthenticated()) {
+            await ctx.logout();
+            ctx.render('logout', { user: user[0] })
+        } else {
+            ctx.redirect('/login')
+        }
     }
 }

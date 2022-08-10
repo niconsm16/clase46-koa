@@ -13,7 +13,7 @@ export class ControllerMain {
             {
                 graphql,
                 title: 'Página principal',
-                user: 'Gimeno',
+                user: ctx.state.user.email,
                 stat: false,
                 error: false
             })

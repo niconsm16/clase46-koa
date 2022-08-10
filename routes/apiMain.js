@@ -1,5 +1,5 @@
 import Router from 'koa-router'
-// import { login } from '../middlewares/midLogin.js'
+import { login } from '../middlewares/midLogin.js'
 // import * as middleware from '../middlewares/midProductos.js'
 // import { midLogProductsError } from '../middlewares/midLogger.js'
 import { ControllerMain } from '../controllers/index.js'
@@ -22,9 +22,8 @@ export class ApiMain {
     get api() {
 
         // Index
-        api.get('/',
-            // login,
-            this.#controller.mainRender)
+        api.get('/', login, this.#controller.mainRender)
+
         //Form
         api.get('/productos-form', this.#controller.form)
 

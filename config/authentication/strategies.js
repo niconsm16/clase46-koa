@@ -4,8 +4,8 @@ import { Login } from './../../db/DAOs/index.js'
 
 const db = new Login()
 
-export const register = new Strategy({ passReqToCallback: true }, async (ctx, username, password, done) => {
-    const user = await db.findUser(ctx.request.body.username)
+export const register = new Strategy(async (username, password, done) => {
+    const user = await db.findUser(username)
     if (user) { return done(null, false) }
     const newUser = { email: username, password }
     db.register(newUser)
@@ -19,12 +19,10 @@ export const login = new Strategy(async (username, password, done) => {
 })
 
 export const serialize = (user, done) => {
-    console.log('serialize')
     done(null, user.email)
 }
 
 export const deserialize = async (username, done) => {
-    console.log('deserialize')
     const user = await db.findUser(username)
     return done(null, user)
 }
