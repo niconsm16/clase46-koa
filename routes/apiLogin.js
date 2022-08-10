@@ -1,5 +1,5 @@
 import Router from 'koa-router';
-import { login } from "../middlewares/midLogin.js";
+import { login, logged } from "../middlewares/midLogin.js";
 import { ControllerLogin } from "../controllers/index.js";
 
 
@@ -19,13 +19,13 @@ export class ApiLogin {
 
     get api() {
         // Login      
-        api.get('/login', this.#controller.login)
+        api.get('/login', logged, this.#controller.login)
         api.post('/login', this.#controller.verification)
         api.get('/login-error', this.#controller.loginError)
         api.get('/logout', login, this.#controller.logout)
 
         // Register       
-        api.get('/register', this.#controller.register)
+        api.get('/register', logged, this.#controller.register)
         api.post('/register', this.#controller.createUser)
         api.get('/register-error', this.#controller.registerError)
 
